@@ -1,0 +1,22 @@
+{
+  "name": "learn-vue3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wdns/vue-code-block": "^2.3.3",
+    "monaco-editor": "^0.52.0",
+    "prismjs": "^1.29.0",
+    "sass": "^1.79.5"
+  },
+  "devDependencies": {
+    "vite-plugin-prismjs": "^0.0.11",
+    "vite-plugin-raw": "^1.0.3"
+  }
+}

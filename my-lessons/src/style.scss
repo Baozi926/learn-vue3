@@ -1,0 +1,30 @@
+#app,
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+button{
+    margin-right: 5px;
+}
+
+.hint{
+    background-color: #ececab;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.container{
+    padding: 20px;
+}
