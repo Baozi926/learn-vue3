@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm -C my-lessons run dev"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "sass": "^1.79.5"
   },
   "devDependencies": {
+    "highlight.js": "^11.10.0",
     "vite-plugin-prismjs": "^0.0.11",
     "vite-plugin-raw": "^1.0.3"
   }

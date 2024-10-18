@@ -10,8 +10,7 @@ const codeString = ref(vueFileContent);
 </script>
 
 <template>
-  <MyCase :code-string="codeString">
-    <!-- <template #md> asdad </template> -->
+  <MyCase title="基础" :code-string="codeString">
     <Example />
 
     <template #md>

@@ -16,5 +16,7 @@ declare module 'vue' {
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     CaseRef: typeof import('./src/components/case-ref/CaseRef.vue')['default']
     CaseRefExample: typeof import('./src/components/case-ref/CaseRefExample.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }

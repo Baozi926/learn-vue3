@@ -67,9 +67,8 @@ const items: ItemType[] = reactive([
 
   getItem("响应式基础", "reactive", null, [
     getItem("Ref", "/reactive-ref", null),
-    getItem("DOM更新时机", "/reactive-base", null),
-
     getItem("Reactive", "reactive-reactive", null),
+    getItem("DOM更新时机", "/reactive-time", null),
   ]),
 
   getItem("Navigation Two", "sub2", null, [

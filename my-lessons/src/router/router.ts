@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import CaseRef from '../views/case-ref/CaseRef.vue';
+import CaseRef from '../views/case-ref/Case.vue';
 import Readme from '../views/readme/Readme.vue';
-import CaseReactiveBase from '../views/case-reactive-base/CaseReactiveBase.vue';
+import CaseReactiveTime from '../views/case-reactive-time/Case.vue';
+import CaseReactive from '../views/case-reactive/Case.vue';
 
 
 
@@ -9,8 +10,9 @@ import CaseReactiveBase from '../views/case-reactive-base/CaseReactiveBase.vue';
 
 const routes = [
     { path: '/readme', component: Readme },
-    { path: '/reactive-base', component: CaseReactiveBase },
+    { path: '/reactive-time', component: CaseReactiveTime },
     { path: '/reactive-ref', component: CaseRef },
+    { path: '/reactive-reactive', component: CaseReactive },
 
 ];
 

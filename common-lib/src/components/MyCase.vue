@@ -6,7 +6,8 @@
 
     <div class="my-case">
       <div class="md">
-        <MdViewer :mdString="mdString" />
+        <!-- <MdViewer :mdString="mdString" /> -->
+         <slot name="md"></slot>
       </div>
 
       <div class="example">
@@ -22,13 +23,11 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  title: string;
-  codeString: string;
-  mdString: string;
+  codeString: string
 }>();
 
 import CodeViewer from "./CodeViewer.vue";
-import MdViewer from "./MdViewer.vue";
+// import MdViewer from "./MdViewer.vue";
 </script>
 
 <style scoped lang="scss">

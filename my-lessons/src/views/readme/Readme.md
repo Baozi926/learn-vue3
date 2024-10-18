@@ -1,5 +1,11 @@
 # 前端培训手册
 
+```javascript
+
+console.log("Hello, World!");
+
+```
+
 ## 目的
 
 * 温习基础
@@ -9,8 +15,8 @@
 ## 目录
 
 * 响应式基础
-  * 简介
-  * Ref
+    * 简介
+    * Ref
   * Reactive
   * Computed
   * Key作用
@@ -21,7 +27,7 @@
 * 生命周期
 
 * 指令
-  * v-once
+   * v-once
   * v-html
   * v-text
   * v-pre
@@ -39,3 +45,4 @@
 
 * 避坑指南
   * watch
+

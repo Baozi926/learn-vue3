@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { MyCase } from "common-lib";
 
 import vueFileContent from "./Example.vue?raw";
@@ -11,12 +11,8 @@ const codeString = ref(vueFileContent);
 
 <template>
   <MyCase :code-string="codeString">
-    <!-- <template #md> asdad </template> -->
+    <template #md> <Readme /> </template>
     <Example />
-
-    <template #md>
-      <Readme />
-    </template>
   </MyCase>
 </template>
 
