@@ -4,7 +4,7 @@
     :code="code"
     highlightjs
     lang="html"
-    theme="stackoverflow-light"
+    theme="github"
   />
 </template>
 

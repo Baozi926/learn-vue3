@@ -1,12 +1,7 @@
 <template>
   <div class="case-wrapper">
-    <!-- <div class="title">
-      {{ title }}
-    </div> -->
-
     <div class="my-case">
       <div class="md">
-        <!-- <MdViewer :mdString="mdString" /> -->
          <slot name="md"></slot>
       </div>
 

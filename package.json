@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm -C my-lessons run dev"
+    "dev": "pnpm -C my-lessons run dev",
+    "build":"pnpm -C my-lessons run build"
   },
   "keywords": [],
   "author": "",
