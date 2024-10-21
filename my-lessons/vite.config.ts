@@ -17,16 +17,19 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/]
     }),
     md({
-      // 这里可以配置你的 markdown 渲染选项
-      // 比如将 highlight.js 应用到代码块
       wrapperComponent: 'div', // 如果需要自定义外层组件
       markdownItSetup(md) {
-      
+
+
         md.set({
           highlight: (str, lang) => {
+
             if (lang && hljs.getLanguage(lang)) {
               try {
-                return `<pre class="hljs code-wrapper"><code>${hljs.highlight(str, { language: lang }).value}</code></pre>`;
+                const result = `<pre class="hljs code-wrapper"><code>${hljs.highlight(str, { language: lang }).value}</code></pre>`;
+
+                return result.replace(/{{/g, '&#123;&#123;') // 转义大括号
+                  .replace(/}}/g, '&#125;&#125;');
               } catch (err) { }
             }
             return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;

@@ -1,80 +1,45 @@
 <template>
-  <div class="hint">例1：使用watch时应该watch对应的.value而不是ref本身</div>
+  <div class="hint row">在get value时执行</div>
 
-  <div class="row">原始值：{{ count }}</div>
   <div class="row">
-    <button @click="add(1)">+</button>
-    <button @click="add(-1)">-</button>
+    <button @click="getA">getA.value</button>
   </div>
 
-  <div class="row">
-    <div>错误的监听：</div>
-    <div>{{ count2 }}</div>
-  </div>
+  <div class="hint row">在set value时执行</div>
 
   <div class="row">
-    <div>正确的监听：</div>
-    <div>{{ count3 }}</div>
-  </div>
-
-  <div class="hint">例2：shallowRef,相当于只监听“=”</div>
-
-  <div class="row">
-
-    <button @click="changeShallowRef">直接更改</button>
-
-    <button @click="changeShallowRefInside"> 在对象里更改</button>
-  </div>
-  <div class="row">
-    {{ shallowTest.count }}
+    <button @click="setA">setA.value</button>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, shallowRef, watch } from "vue";
+class A {
+  _value = 0;
 
-const count = ref<number>(0);
+  _dirty = false;
 
-const count2 = ref<number>(0);
-
-const count3 = ref<number>(0);
-
-const shallowTest = shallowRef({
-  count: 0,
-});
-
-function changeShallowRef() {
-  shallowTest.value = {
-    count: shallowTest.value.count + 1,
-  };
-}
-
-function changeShallowRefInside() {
-  shallowTest.value.count = shallowTest.value.count + 1;
-}
-
-async function add(val = 1) {
-  count.value = count.value + val;
-}
-
-//错误的监听
-watch(
-  () => {
-    return count;
-  },
-  (val) => {
-    count2.value = val.value;
+  get value() {
+    //可以在此收集依赖
+    console.log("get a", this._value);
+    return this._value;
   }
-);
 
-//正确的监听
-watch(
-  () => {
-    return count.value;
-  },
-  (val) => {
-    count3.value = val;
+  set value(val) {
+    //可以在此标记数据为脏数据，并且触发脏检查
+    console.log("set a", " old:", this._value, "new:", val);
+    this._value = val;
+    this._dirty = true;
   }
-);
+}
+
+const a = new A();
+
+function getA() {
+  console.log(a.value);
+}
+
+function setA() {
+  a.value = a.value + 1;
+}
 </script>
 
 <style scoped></style>

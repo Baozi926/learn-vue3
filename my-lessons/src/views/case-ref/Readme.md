@@ -1,6 +1,6 @@
 # 响应式基础-Ref
 
-在组合式 API 中，推荐使用 ref() 函数来声明响应式状态
+在组合式 API 中，推荐使用 ref() 函数来声明响应式状态，在 script 中，需要通过.value 改值，但是在 template 中可以直接使用变量
 
 ```typescript
 import { ref, watch } from "vue";
@@ -27,44 +27,32 @@ const myRef = {
 };
 ```
 
-## 避坑
+# Vue2 和 Vue3 的监听区别
 
-### 为什么我watch一个ref但是监听不到变化
+vue2 中使用 Object.defineProperty()来定义 getter 和 setter
 
-- 例1
+vue3 中使用 Proxy
 
-使用 watch 监听变化时，应该 watch 对应的.value 而不是 ref 本身，否则监听不到变化
+# 只有用了 ref、reactive 后，在 vue 模版和 watch 中才能响应变化
 
-
-### 性能
-
-- 例2
-
-Vue 的响应性系统默认是深度的。虽然这让状态管理变得更直观，但在数据量巨大时，深度响应性也会导致不小的性能负担，因为每个属性访问都将触发代理的依赖追踪。好在这种性能负担通常只有在处理超大型数组或层级很深的对象时，例如一次渲染需要访问 100,000+ 个属性时，才会变得比较明显。因此，它只会影响少数特定的场景。
-
-Vue 确实也为此提供了一种解决方案，通过使用 shallowRef() 和 shallowReactive() 来绕开深度响应。浅层式 API 创建的状态只在其顶层是响应式的，对所有深层的对象不会做任何处理。这使得对深层级属性的访问变得更快，但代价是，我们现在必须将所有深层级对象视为不可变的，并且只能通过替换整个根状态来触发更新：
+下面代码中 addNumber 无法触发 dom 元素更新，因为number变量没有使用响应式
 
 ```javascript
-const shallowArray = shallowRef([
-  /* 巨大的列表，里面包含深层的对象 */
-])
+<template>
+  <div class="row">
+    <button @click="addNumber">+</button>
+  </div>
 
-// 这不会触发更新...
-shallowArray.value.push(newObject)
-// 这才会触发更新
-shallowArray.value = [...shallowArray.value, newObject]
+  <div class="row">{{ number }}</div>
+</template>
 
-// 这不会触发更新...
-shallowArray.value[0].foo = 1
-// 这才会触发更新
-shallowArray.value = [
-  {
-    ...shallowArray.value[0],
-    foo: 1
-  },
-  ...shallowArray.value.slice(1)
-]
+<script setup>
+  //bad
+  //应该是  const number = ref(6)
+  let number = 6;
 
+  function addNumber() {
+    number = number + 1;
+  }
+</script>
 ```
-
-
