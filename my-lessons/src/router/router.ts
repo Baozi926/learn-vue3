@@ -17,6 +17,8 @@ const routes = [
     { path: '/case-ref-watch', component: () => import('../views/case-ref-watch/Case.vue') },
     { path: '/case-shallow-ref', component: () => import('../views/case-shallow-ref/Case.vue') },
 
+    { path: '/case-computed', component: () => import('../views/case-computed/Case.vue') },
+
     { path: '/reactive-reactive', component: CaseReactive },
     {
         path: '/:pathMatch(.*)',

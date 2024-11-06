@@ -48,7 +48,20 @@ const menuWidth = ref("270px");
 
 const { menus, openKeys, selectedKeys } = useMenuConfig();
 
-onMounted(() => {});
+onMounted(async () => {
+  await router.isReady();
+  if (router.currentRoute.value.matched.length === 0) {
+    router
+      .push({
+        path: "/readme",
+      })
+      .then(() => {
+        selectedKeys.value = [router.currentRoute.value.path];
+      });
+  }
+
+  selectedKeys.value = [router.currentRoute.value.path];
+});
 
 const handleClick: MenuProps["onClick"] = (e) => {
   console.log("click", e);

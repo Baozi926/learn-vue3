@@ -25,10 +25,10 @@ export function useMenuConfig() {
 
 
     const selectedKeys = ref<string[]>(["readme"]);
-    const openKeys = ref<string[]>(["/reactive", '/vue3','/css','/javascript']);
+    const openKeys = ref<string[]>(["/reactive", '/vue3', '/css', '/javascript', '/component']);
 
     const menus: ItemType[] = reactive([
-        getItem("简介", "/readme", () => h(MailOutlined)),
+        getItem("前端培训手册", "/readme", () => h(MailOutlined)),
         { type: "divider" },
 
 
@@ -39,7 +39,18 @@ export function useMenuConfig() {
                 getItem("Reactive", "reactive-reactive", null),
                 getItem("DOM更新时机", "/reactive-time", null),
                 getItem("大对象的监听时的性能问题", "/case-shallow-ref", null),
-            ])
+                getItem("computed", "/case-computed", null),
+                
+            ]),
+            getItem("组件化", "/component", null, [
+                getItem("组件", "/case-component", null),
+                getItem("通信-prop", "/case-component-prop", null),
+                getItem("通信-emit/on", "/case-component-emit", null),
+                getItem("通信-provide/inject", "/case-component-provide", null),
+                getItem("插槽-slot", "/case-component-slot", null),
+                getItem("hooks", "/case-component-hooks", null),
+            ]),
+            getItem("TS", "/case-vue-ts", null),
         ]),
 
 
